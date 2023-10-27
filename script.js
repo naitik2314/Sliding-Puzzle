@@ -251,5 +251,45 @@ let puzzle = {
   }
 }
 
+let startTime = null
+let timerInterval;
+
+function startTimer() {
+  startTime = Date.now();
+  timerInterval = setInterval(updateTimer, 1000);
+}
+
+function updateTimer() {
+  const currentTime = Date.now()
+  const elapsedTime = Math.floor((currentTime - startTime) / 1000);
+  document.getElementById('timer').textContent = 'Time: ${elapsedTime} seconds';
+}
+
+function stopTimer() {
+  clearInterval(timerInterval);
+}
+
+// Add these event listeners after your puzzle.createPuzzleGrid(rows, columns); line
+
+document.getElementById('reset-button').addEventListener('click', function() {
+  // Implement logic to reset the game
+  // Stop the timer, shuffle the puzzle, and update the display
+  stopTimer();
+  puzzle.createPuzzleGrid(rows, columns);
+  document.getElementById('reaction').textContent = '😐'; // Reset the reaction emoji
+});
+
+document.getElementById('simple-game-button').addEventListener('click', function() {
+  // Implement logic to start a simple game
+  // Keep only one box out of order, shuffle the rest, and start the timer
+  stopTimer();
+  puzzle.createPuzzleGrid(rows, columns);
+  const cells = document.querySelectorAll('.cell');
+  const randomIndex = Math.floor(Math.random() * cells.length);
+  cells[randomIndex].textContent = '0'; // Make one box out of order
+  startTimer();
+});
+
+
 
 puzzle.createPuzzleGrid(rows, columns);
