@@ -1,0 +1,88 @@
+body {
+  background-color: #67B26F;
+  background: -webkit-linear-gradient(to left, #67B26F, #99CFFF);
+  background: linear-gradient(to left, #67B26F, #99CFFF);
+}
+
+#puzzle-grid {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Roboto Slab", Helvetica, serif;
+  font-size: 3em;
+  border: 8px solid rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+#reaction {
+  margin-top: 0.5em;
+  text-align: center;
+  font-size: 5em;
+}
+
+.cell {
+  cursor: pointer;
+  transition: left 0.3s ease, top 0.3s ease;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  color: #99CFFF;
+  box-sizing: border-box;
+  border-top: 8px solid #4C7498;
+  border-left: 8px solid #4C7498;
+  border-bottom: 8px solid #515C65;
+  border-right: 8px solid #515C65;
+  text-shadow: -2px -2px 0px rgba(0, 0, 0, 0.5);
+  background: #2C4459;
+}
+.cell:active {
+  background: -webkit-linear-gradient(to top, #345069, #2C4459);
+  background: linear-gradient(to top, #345069, #2C4459);
+}
+
+.cell[data-row="1"] {
+  top: 0px;
+}
+
+.cell[data-row="2"] {
+  top: 100px;
+}
+
+.cell[data-row="3"] {
+  top: 200px;
+}
+
+.cell[data-row="4"] {
+  top: 300px;
+}
+
+.cell[data-column="1"] {
+  left: 0px;
+}
+
+.cell[data-column="2"] {
+  left: 100px;
+}
+
+.cell[data-column="3"] {
+  left: 200px;
+}
+
+.cell[data-column="4"] {
+  left: 300px;
+}
+
+#blank {
+  background: transparent;
+  border: 8px solid transparent;
+}
