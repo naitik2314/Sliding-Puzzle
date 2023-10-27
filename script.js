@@ -262,7 +262,7 @@ function startTimer() {
 function updateTimer() {
   const currentTime = Date.now()
   const elapsedTime = Math.floor((currentTime - startTime) / 1000);
-  document.getElementById('timer').textContent = 'Time: ${elapsedTime} seconds';
+  document.getElementById('timer').textContent = `Time: ${elapsedTime} seconds`;
 }
 
 function stopTimer() {
