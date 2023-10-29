@@ -1,14 +1,16 @@
 // SET PUZZLE SIZE ----------------------
 // Note: Must match values in style.css
-const rows    = 4;
+const rows = 4;
 const columns = 4;
 // --------------------------------------
 
 let puzzle = {
-  createPuzzleGrid: function(rows, columns) {
+  createPuzzleGrid: function (rows, columns) {
     const self = this;
     let puzzle = document.getElementById('puzzle-grid');
     let shuffledLabels = self.shuffle(self.createLabels(rows, columns));
+
+    puzzle.innerHTML = ''; // Clear the previous puzzle
 
     for (let row = 1; row <= rows; row++) {
       for (let column = 1; column <= columns; column++) {
@@ -40,8 +42,8 @@ let puzzle = {
   },
 
 
-  createLabels: function(rows, columns) {
-    const totalLabels = (rows * columns);
+  createLabels: function (rows, columns) {
+    const totalLabels = rows * columns;
     let currentLabel = 0; // the all-important blank cell!
     let labels = [];
 
@@ -251,7 +253,7 @@ let puzzle = {
   }
 }
 
-let startTime = null
+let startTime = null;
 let timerInterval;
 
 function startTimer() {
@@ -260,7 +262,7 @@ function startTimer() {
 }
 
 function updateTimer() {
-  const currentTime = Date.now()
+  const currentTime = Date.now();
   const elapsedTime = Math.floor((currentTime - startTime) / 1000);
   document.getElementById('timer').textContent = `Time: ${elapsedTime} seconds`;
 }
@@ -271,7 +273,7 @@ function stopTimer() {
 
 // Add these event listeners after your puzzle.createPuzzleGrid(rows, columns); line
 
-document.getElementById('reset-button').addEventListener('click', function() {
+document.getElementById('reset-button').addEventListener('click', function () {
   // Implement logic to reset the game
   // Stop the timer, shuffle the puzzle, and update the display
   stopTimer();
@@ -279,7 +281,7 @@ document.getElementById('reset-button').addEventListener('click', function() {
   document.getElementById('reaction').textContent = '😐'; // Reset the reaction emoji
 });
 
-document.getElementById('simple-game-button').addEventListener('click', function() {
+document.getElementById('simple-game-button').addEventListener('click', function () {
   // Implement logic to start a simple game
   // Keep only one box out of order, shuffle the rest, and start the timer
   stopTimer();
@@ -289,7 +291,5 @@ document.getElementById('simple-game-button').addEventListener('click', function
   cells[randomIndex].textContent = '0'; // Make one box out of order
   startTimer();
 });
-
-
 
 puzzle.createPuzzleGrid(rows, columns);
